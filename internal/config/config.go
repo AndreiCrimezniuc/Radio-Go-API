@@ -29,6 +29,6 @@ func InitConfig() Configs {
 	if er := yaml.NewDecoder(fh).Decode(&configs); er != nil {
 		log.Fatalln(er)
 	}
-	zap.Must(configs.Logger.Build())
+
 	return configs
 }
