@@ -10,4 +10,5 @@ vendor/
 *.test
 
 *.out
-data/
+data/postgresql_data/data
+data/RawJsonData/
