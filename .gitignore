@@ -1,0 +1,13 @@
+.env.*
+vendor/
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+.idea/
+.fleet/
+*.test
+
+*.out
+data/

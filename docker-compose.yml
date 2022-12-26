@@ -1,0 +1,53 @@
+version: '3.8'
+services:
+  app:
+    build: .
+    container_name: app
+    working_dir: /go/src
+    depends_on:
+      - db
+    ports:
+        - "8080:8080"
+    volumes:
+      - ./:/go/src
+    networks:
+      - radio_app
+  go:
+    image: golang:1.19
+    container_name: go_server
+    working_dir: /go/src/app
+    volumes:
+      - .:/go/src/app
+    networks:
+      - radio_app
+  db:
+    image: postgres:14.1-alpine
+    restart: always
+    environment:
+      - POSTGRES_DB=Radio
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=root
+    ports:
+      - '5432:5432'
+    volumes:
+      - ./data/postgresql_data/init_db/init_db.sql:/docker-entrypoint-initdb.d/init_db.sql
+      - ./data/postgresql_data/data:/var/lib/postgresql/data
+    networks:
+      - radio_app
+  nginx:
+    image: nginx:1.23.1
+    container_name: app-nginx
+    restart: unless-stopped
+    tty: true
+    volumes:
+      - ./:/var/www
+      - ./configs/nginx/conf.d:/etc/nginx/conf.d
+    ports:
+      - "80:80"
+      - "443:443"
+    networks:
+        - radio_app
+
+networks:
+  radio_app:
+    driver: bridge

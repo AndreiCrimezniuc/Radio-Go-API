@@ -1,0 +1,16 @@
+app:
+  APP_PORT: ":8080"
+db:
+  ADDRESS: "localhost:5432"
+  USER: "root"
+  NAME: "Radio"
+  PASSWORD: "root"
+logger:
+  level: "debug"
+  encoding: "console"
+  outputPaths: [ "stdout", "var/logs/log" ]
+  errorOutputPaths: [ "stderr" ]
+  encoderConfig:
+    messageKey: "message"
+    levelKey: "level"
+    levelEncoder: "lowercase"
