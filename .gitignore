@@ -15,4 +15,4 @@ data/RawJsonData/
 build/
 main
 
-var/logs/
+var/logs

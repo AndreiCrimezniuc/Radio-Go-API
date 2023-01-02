@@ -1,6 +1,7 @@
 package main
 
 import (
+	"github.com/gin-contrib/cors"
 	"github.com/gin-gonic/gin"
 	"go.uber.org/zap"
 	"nokogiriwatir/radio-main/internal/config"
@@ -18,6 +19,7 @@ func main() {
 
 func handleRouting(configs config.Configs, logger *zap.Logger) {
 	router := gin.Default()
+	router.Use(cors.Default())
 
 	db := database.Connection(configs.Db)
 

@@ -11,7 +11,7 @@ func (env *DIEnv) HandleStation(c *gin.Context) {
 
 	if er != nil {
 		env.Logger.Error("Error in getStations" + er.Error())
-		c.String(http.StatusNotFound, "there is no station or error in code")
+		c.String(http.StatusNotFound, "there is no station or "+er.Error())
 	} else {
 		c.JSON(http.StatusOK, &station)
 	}
