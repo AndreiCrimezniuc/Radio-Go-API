@@ -1,1 +1,1 @@
-# Don't readme. I'm scared
+# This is the API for NEXT JS STATIC RADIO SITE

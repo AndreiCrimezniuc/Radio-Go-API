@@ -46,3 +46,26 @@ func GetStation(id string, cnct *sql.DB) (Station, error) {
 	}
 	return station, nil
 }
+
+func GetStations(cnct *sql.DB) ([]Station, error) {
+	query := fmt.Sprintf(`Select * from %s limit 100`, _stationDB)
+	data, err := cnct.QueryContext(context.Background(), query)
+
+	if err != nil {
+		return []Station{}, err
+	}
+
+	stations := make([]Station, 0, 100)
+
+	for data.Next() {
+		var station Station
+		er := data.Scan(&station.ID, &station.Slug, &station.Name, &station.Site, &station.Email, &station.Region, &station.City, &station.Address, &station.Facebook, &station.Twitter, &station.OK, &station.VK, &station.Wiki, &station.Genre, &station.PhoneNumber, &station.Stream)
+		if er != nil {
+			return []Station{}, er
+		}
+
+		stations = append(stations, station)
+	}
+
+	return stations, nil
+}

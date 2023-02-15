@@ -3,7 +3,7 @@ package router_handler
 import (
 	"database/sql"
 	"go.uber.org/zap"
-	"nokogiriwatir/radio-main/internal/config"
+	"nokogiriwatir/radio-main/pkg/config"
 )
 
 // Dependency Injection Environment

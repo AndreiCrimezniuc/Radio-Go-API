@@ -4,7 +4,7 @@ import (
 	"go.uber.org/zap"
 	"gopkg.in/yaml.v3"
 	"log"
-	"nokogiriwatir/radio-main/internal/database"
+	"nokogiriwatir/radio-main/pkg/database"
 	"os"
 )
 
