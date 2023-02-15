@@ -7,7 +7,7 @@ import (
 	"github.com/essentialkaos/translit"
 	"github.com/jackc/pgx/v5"
 	"log"
-	"nokogiriwatir/radio-main/internal/database"
+	"nokogiriwatir/radio-main/pkg/database"
 	"os"
 	"strings"
 )
